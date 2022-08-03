@@ -1,15 +1,16 @@
 function selectPet() {
+    let playerPetName = document.getElementById('player-pet-name')
+
     // Se ha de comprobar todos y cada uno de los radio buttons
     if(document.getElementById('Charmander').checked) {
-        alert("Has seleccionado a Charmander")
     } else if(document.getElementById('Bulbasaur').checked) {
-        alert("Has seleccionado a Bulbasaur")
+        playerPetName.innerHTML = 'Bulbasaur'
     } else if(document.getElementById('Charizard').checked) {
-        alert("Has seleccionado a Charizard")
+        playerPetName.innerHTML = 'Charizard'
     } else if(document.getElementById('Squirtle').checked == true) {
-        alert("Has seleccionado a Squirtle")
-    } else if(document.getElementById('Pikachu').checked) {
-        alert("Has seleccionado a Pikachu")
+        playerPetName.innerHTML = 'Squirtle'
+    } else if(document.getElementById('Pikachu').checked) {
+        playerPetName.innerHTML = 'Pikachu'
     } else {
         alert("Debes seleccionar a una mascota!!")
     }
@@ -21,6 +22,3 @@ window.addEventListener('load', () => {
     let petButton = document.getElementById('select-pet-button');   // Ya estamos seguros de que ha cargado
     petButton.addEventListener('click', selectPet)
 })
-
-
-// checked es una propiedad de los input radio

@@ -1,0 +1,24 @@
+<input type="radio" name="pet" id="carlos"> Carlos
+<input type="radio" name="pet" id="picachu"> Picachu
+<input type="radio" name="pet" id="pepe"> Pepe
+<input type="radio" name="pet" id="juan"> Juan
+<input type="radio" name="pet" id="antonio"> Antonio
+
+
+
+function seleccionarMascotaJugador(){
+
+    let mascotas = document.getElementsByName('mascota')
+ 
+     mascotas.forEach(mascota => {
+         if(mascota.checked){
+             alert("Seleccionaste a " + mascota.value)    
+         }
+     });    
+
+
+     Al inicio del html podemos utilizar defer, esto realiza que despues de cargado se ejecute el JS:
+<script src="./js/main.js" defer></script>
+
+
+Asi como pueden usar .innerHTML tambien pueden usar .textContent e .innerText
