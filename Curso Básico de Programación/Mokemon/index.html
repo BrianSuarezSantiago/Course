@@ -3,6 +3,9 @@
     <head>
         <meta charset="utf-8"/>
         <title>Mokemon</title>
+        <!-- Cuando se cargue el script el boton no existe
+            <script type="text/javascript" src="./js/mokemon.js"></script>
+        -->
     </head>
 
     <body>
@@ -11,13 +14,22 @@
         <section id="select-pets">
             <h3>Elige tu mascota:</h3>
 
+            <label for="Charmander">Charmander</label>
             <input type="radio" name="pet" id="Charmander">
+
+            <label for="Bulbasaur">Bulbasaur</label>
             <input type="radio" name="pet" id="Bulbasaur">
+
+            <label for="Charizard">Charizard</label>
             <input type="radio" name="pet" id="Charizard">
+
+            <label for="Squirtle">Squirtle</label>
             <input type="radio" name="pet" id="Squirtle">
+
+            <label for="Pikachu">Pikachu</label>
             <input type="radio" name="pet" id="Pikachu">
 
-            <button>Select Pet!</button>
+            <button id="select-pet-button">Select Pet!</button>
         </section>
 
         <section id="select-attack">
@@ -27,9 +39,9 @@
             <p>La mascota rival tiene <span>3</span> vidas</p>
 
             <p>
-                <button type="button">Fuego hugo! 🔥</button>
-                <button type="button">Ataque agua 💧</button>
-                <button type="button"> Ataque tierra 🌱</button>
+                <button type="button" id="fire-button">Fuego hugo! 🔥</button>
+                <button type="button" id="water-button">Ataque agua 💧</button>
+                <button type="button" id="sand-button"> Ataque tierra 🌱</button>
             </p>
         </section>
 
@@ -39,7 +51,9 @@
         </section>
 
         <section id="reset-game">
-            <button type="button">Reset Game</button>
+            <button type="button" id="reset-button">Reset Game</button>
         </section>
+
+        <script type="text/javascript" src="./js/mokemon.js"></script>
     </body>
 </html>
