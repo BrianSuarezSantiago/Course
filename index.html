@@ -8,34 +8,29 @@
                 return Math.floor(Math.random() * (max - min + 1) + min)
             }
 
+            function selection(selection) {
+                let result = ""
+
+                if(selection == 1) {
+                    result = "Rock 🪨"
+                } else if(selection == 2) {
+                    result = "Paper 🧾"
+                } else if(selection == 3) {
+                    result = "Scissors ✂️"
+                } else {
+                    result = "Wrong option!"
+                }
+
+                return result;
+            }
+
             // 1 es rock, 2 paper, 3 scissor
             let player = 0
-
             let pc = generate_random_number(1, 3)
-
             player = prompt("Select: 1 for Rock, 2 for Paper, 3 for Scissors")
 
-            // User Input
-            if(player == 1) {
-                alert("Elegiste 🪨")
-            } else if(player == 2) {
-                alert("Elegiste 🧾")
-            } else if(player == 3) {
-                alert("Elegiste ✂️")
-            } else {
-                alert("Opcion incorrecta")
-            }
-
-             // PC Input
-            if(pc == 1) {
-                alert("PC eligió 🪨")
-            } else if(pc == 2) {
-                alert("PC eligió 🧾")
-            } else if(pc == 3) {
-                alert("PC eligió ✂️")
-            } else {
-                alert("Opcion incorrecta")
-            }
+            alert("Tu eliges " + selection(player))
+            alert("PC elige " + selection(pc))
 
             // Combat
             if(player == pc) {
