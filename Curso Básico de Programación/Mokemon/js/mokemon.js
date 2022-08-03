@@ -1,20 +1,16 @@
 function selectPet() {
-    result = ""
-
+    // Se ha de comprobar todos y cada uno de los radio buttons
     if(document.getElementById('Charmander').checked) {
         alert("Has seleccionado a Charmander")
     } else if(document.getElementById('Bulbasaur').checked) {
-        result = "Bulbasaur"
+        alert("Has seleccionado a Bulbasaur")
     } else if(document.getElementById('Charizard').checked) {
-        result = "Charizard"
+        alert("Has seleccionado a Charizard")
     } else if(document.getElementById('Squirtle').checked == true) {
-        result = "Squirtle"
-    } else if(document.getElementById('Pikachu').checked) {
-        result = "Pikachu"
+        alert("Has seleccionado a Squirtle")
     } else {
-        result = "Charmander"
+        alert("Has seleccionado a Pikachu")
     }
-    //alert("YOU SELECT " + result)
 }
 
 // Pedimos al browser que nos avise cuando se hayan cargado todos los componentes de HTML
