@@ -8,8 +8,10 @@ function selectPet() {
         alert("Has seleccionado a Charizard")
     } else if(document.getElementById('Squirtle').checked == true) {
         alert("Has seleccionado a Squirtle")
-    } else {
+    } else if(document.getElementById('Pikachu').checked) {
         alert("Has seleccionado a Pikachu")
+    } else {
+        alert("Debes seleccionar a una mascota!!")
     }
 }
 
