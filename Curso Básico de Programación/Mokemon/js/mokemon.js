@@ -20,6 +20,7 @@ function selectPet() {
     selectEnemyPet()    // No hay que asignarselo a un boton
 }
 
+
 function generaterandomSelection(min, max) {
     // Rango de seleccion de mascotas
     return Math.floor(Math.random() * (max - min + 1) + min)
@@ -47,9 +48,35 @@ function selectEnemyPet() {
 }
 
 
+let ataqueJugador = null    // VARIABLE CON SCOPE GLOBAL
+
 // Pedimos al browser que nos avise cuando se hayan cargado todos los componentes de HTML
 window.addEventListener('load', () => {
     // Se ejecutara el script cuando el navegador haya cargado todos los elementos HTML
     let petButton = document.getElementById('select-pet-button');   // Ya estamos seguros de que ha cargado
     petButton.addEventListener('click', selectPet)
+
+
+    // ESTA LOGICA DE LOS BOTONES DE DAÑO SE PUEDE ENCAPSUALAR EN OTRA FUNCION Y HACER UNA ESPERA A DICHA FUNCION
+    // Tener la logica de jugar al inicio cuando se cargue
+    let botonFuego = document.getElementById('fire-button')
+    botonFuego.addEventListener('click', () => {
+        ataqueJugador = 'FUEGO'
+        alert(ataqueJugador)
+    })
+
+
+    let botonAgua = document.getElementById('water-button')    // Hacemos el boton con HTML
+    botonAgua.addEventListener('click', () => {
+        // Trabajamos la funcionalidad con JS previo cogido el boton
+        ataqueJugador = 'AGUA'
+        alert(ataqueJugador)
+    })
+
+
+    let botonTierra = document.getElementById('land-button')
+    botonTierra.addEventListener('click', () => {
+        ataqueJugador = 'TIERRA'
+        alert(ataqueJugador)
+    })
 })
