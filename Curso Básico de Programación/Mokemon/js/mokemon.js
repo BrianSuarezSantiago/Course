@@ -48,16 +48,16 @@ function selectEnemyPet() {
 }
 
 
-//let ataqueJugador = null    // VARIABLE CON SCOPE GLOBAL
+//let ataqueJugador = null    // VARIABLE CON SCOPE GLOBAL. USAR PARA VER SU VALOR EN CONSOLA
 
 function ataquesJugador() {
-    let ataqueJugador = null
-
     let spanAtaqueJugador = document.getElementById('player-attack')
 
     let botonFuego = document.getElementById('fire-button')
     botonFuego.addEventListener('click', () => {
         spanAtaqueJugador.innerHTML = 'FUEGO'
+        //ataqueJugador = "FUEGO"
+        ataquesEnemigo()
     })
 
 
@@ -65,16 +65,21 @@ function ataquesJugador() {
     botonAgua.addEventListener('click', () => {
         // Trabajamos la funcionalidad con JS previo cogido el boton
         spanAtaqueJugador.innerHTML = 'AGUA'
+        //ataqueJugador = "AGUA"
+        ataquesEnemigo()
     })
 
 
     let botonTierra = document.getElementById('land-button')
     botonTierra.addEventListener('click', () => {
         spanAtaqueJugador.innerHTML = 'TIERRA'
+        //ataqueJugador = "TIERRA"
+        ataquesEnemigo()
     })
 
     // DESPUES DE QUE EL JUGADOR SELECCIONE SU ATAQUE, LO HACE LA MAQUINA
-    ataquesEnemigo()
+    //ataquesEnemigo()
+    // NO SE PUEDE PONER AQUI PORQUE EL ANTERIOR SON FUNCIONES Y CUANDO ENTRE TERMINARAN Y NO LLEGARA
 }
 
 
