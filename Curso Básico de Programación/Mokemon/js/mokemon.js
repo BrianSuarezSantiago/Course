@@ -28,7 +28,7 @@ function generaterandomSelection(min, max) {
 
 
 function selectEnemyPet() {
-    let randomSelection = generaterandomSelection(1, 3);
+    let randomSelection = generaterandomSelection(1, 5);
 
     let enemyPetName = document.getElementById('enemy-pet-name');    // span
 
@@ -48,54 +48,66 @@ function selectEnemyPet() {
 }
 
 
-//let ataqueJugador = null    // VARIABLE CON SCOPE GLOBAL. USAR PARA VER SU VALOR EN CONSOLA
+let ataqueJugador = null
+let ataqueEnemigo = null
 
 function ataquesJugador() {
-    let spanAtaqueJugador = document.getElementById('player-attack')
-
     let botonFuego = document.getElementById('fire-button')
     botonFuego.addEventListener('click', () => {
-        spanAtaqueJugador.innerHTML = 'FUEGO'
-        //ataqueJugador = "FUEGO"
-        ataquesEnemigo()
+        ataqueJugador = "FUEGO"
+        f_ataquesEnemigo()
     })
 
 
-    let botonAgua = document.getElementById('water-button')    // Hacemos el boton con HTML
+    let botonAgua = document.getElementById('water-button')    // Accedemos al boton con HTML
     botonAgua.addEventListener('click', () => {
         // Trabajamos la funcionalidad con JS previo cogido el boton
-        spanAtaqueJugador.innerHTML = 'AGUA'
-        //ataqueJugador = "AGUA"
-        ataquesEnemigo()
+        ataqueJugador = "AGUA"
+        f_ataquesEnemigo()
     })
 
 
     let botonTierra = document.getElementById('land-button')
     botonTierra.addEventListener('click', () => {
-        spanAtaqueJugador.innerHTML = 'TIERRA'
-        //ataqueJugador = "TIERRA"
-        ataquesEnemigo()
+        ataqueJugador = "TIERRA"
+        f_ataquesEnemigo()
     })
 
     // DESPUES DE QUE EL JUGADOR SELECCIONE SU ATAQUE, LO HACE LA MAQUINA
-    //ataquesEnemigo()
+    //f_ataquesEnemigo() --> UNREACHABLE STATEMENT
     // NO SE PUEDE PONER AQUI PORQUE EL ANTERIOR SON FUNCIONES Y CUANDO ENTRE TERMINARAN Y NO LLEGARA
 }
 
 
-function ataquesEnemigo() {
+function f_ataquesEnemigo() {
     let randomSelection = generaterandomSelection(1, 3);
     //alert("ha generado " + randomSelection)
 
     let enemyAttack = document.getElementById('enemy-attack')
 
     if(randomSelection == 1) {
-        enemyAttack.innerHTML = 'FUEGO'
+        ataqueEnemigo = 'FUEGO'
     } else if(randomSelection == 2) {
-        enemyAttack.innerHTML = 'AGUA'
+        ataqueEnemigo = 'AGUA'
     } else {
-        enemyAttack.innerHTML = 'TIERRA'
+        ataqueEnemigo = 'TIERRA'
     }
+
+    // UNA VEZ SE TIENEN LOS DOS ATAQUES SE CREAN LOS MENSAJES
+    crearMensaje()
+}
+
+
+function crearMensaje() {
+    let parrafo = document.createElement('p')    // nombre de la etiqueta HTML a crear con JS
+    // UNA VEZ CREADO EL PARRAFO MODIFICAMOS EL CONTENIDO INCLUIDO DENTRO DEL HTML
+    parrafo.innerHTML = 'Tu mascota atacó con' + ataqueJugador + 
+                        'la mascota del enemigo atacó con ' + ataqueEnemigo
+
+    // PREVIAMENTE YA HA CREADO EL PARRAFO PERO FALTA INDICARLE DONDE QUEREMOS QUE LO META
+    // LE INDICAMOS QUE SE LO AÑADA A LA SECCION
+    let sectionMensajes = document.getElementById('game-messages');
+    sectionMensajes.appendChild(parrafo)
 }
 
 
