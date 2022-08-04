@@ -28,7 +28,7 @@ function generaterandomSelection(min, max) {
 
 
 function selectEnemyPet() {
-    let randomSelection = generaterandomSelection(1, 5);
+    let randomSelection = generaterandomSelection(1, 3);
 
     let enemyPetName = document.getElementById('enemy-pet-name');    // span
 
@@ -50,40 +50,48 @@ function selectEnemyPet() {
 
 //let ataqueJugador = null    // VARIABLE CON SCOPE GLOBAL
 
-function ataques() {
+function ataquesJugador() {
     let ataqueJugador = null
+
+    let spanAtaqueJugador = document.getElementById('player-attack')
 
     let botonFuego = document.getElementById('fire-button')
     botonFuego.addEventListener('click', () => {
-        ataqueJugador = 'FUEGO'
-        alert(ataqueJugador)
+        spanAtaqueJugador.innerHTML = 'FUEGO'
     })
 
 
     let botonAgua = document.getElementById('water-button')    // Hacemos el boton con HTML
     botonAgua.addEventListener('click', () => {
         // Trabajamos la funcionalidad con JS previo cogido el boton
-        ataqueJugador = 'AGUA'
-        alert(ataqueJugador)
+        spanAtaqueJugador.innerHTML = 'AGUA'
     })
 
 
     let botonTierra = document.getElementById('land-button')
     botonTierra.addEventListener('click', () => {
-        ataqueJugador = 'TIERRA'
-        alert(ataqueJugador)
+        spanAtaqueJugador.innerHTML = 'TIERRA'
     })
+
+    // DESPUES DE QUE EL JUGADOR SELECCIONE SU ATAQUE, LO HACE LA MAQUINA
+    ataquesEnemigo()
 }
 
 
+function ataquesEnemigo() {
+    let randomSelection = generaterandomSelection(1, 3);
+    //alert("ha generado " + randomSelection)
 
+    let enemyAttack = document.getElementById('enemy-attack')
 
-
-
-
-
-
-
+    if(randomSelection == 1) {
+        enemyAttack.innerHTML = 'FUEGO'
+    } else if(randomSelection == 2) {
+        enemyAttack.innerHTML = 'AGUA'
+    } else {
+        enemyAttack.innerHTML = 'TIERRA'
+    }
+}
 
 
 // Pedimos al browser que nos avise cuando se hayan cargado todos los componentes de HTML
@@ -94,5 +102,4 @@ window.addEventListener('load', () => {
 })
 
 
-window.addEventListener('load', ataques)
-
+window.addEventListener('load', ataquesJugador)
