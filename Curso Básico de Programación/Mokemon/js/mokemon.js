@@ -48,17 +48,11 @@ function selectEnemyPet() {
 }
 
 
-let ataqueJugador = null    // VARIABLE CON SCOPE GLOBAL
+//let ataqueJugador = null    // VARIABLE CON SCOPE GLOBAL
 
-// Pedimos al browser que nos avise cuando se hayan cargado todos los componentes de HTML
-window.addEventListener('load', () => {
-    // Se ejecutara el script cuando el navegador haya cargado todos los elementos HTML
-    let petButton = document.getElementById('select-pet-button');   // Ya estamos seguros de que ha cargado
-    petButton.addEventListener('click', selectPet)
+function ataques() {
+    let ataqueJugador = null
 
-
-    // ESTA LOGICA DE LOS BOTONES DE DAÑO SE PUEDE ENCAPSUALAR EN OTRA FUNCION Y HACER UNA ESPERA A DICHA FUNCION
-    // Tener la logica de jugar al inicio cuando se cargue
     let botonFuego = document.getElementById('fire-button')
     botonFuego.addEventListener('click', () => {
         ataqueJugador = 'FUEGO'
@@ -79,4 +73,26 @@ window.addEventListener('load', () => {
         ataqueJugador = 'TIERRA'
         alert(ataqueJugador)
     })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// Pedimos al browser que nos avise cuando se hayan cargado todos los componentes de HTML
+window.addEventListener('load', () => {
+    // Se ejecutara el script cuando el navegador haya cargado todos los elementos HTML
+    let petButton = document.getElementById('select-pet-button');   // Ya estamos seguros de que ha cargado
+    petButton.addEventListener('click', selectPet)
 })
+
+
+window.addEventListener('load', ataques)
+
