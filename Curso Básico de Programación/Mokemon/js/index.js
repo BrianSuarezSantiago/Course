@@ -102,7 +102,8 @@ function crearMensaje() {
     let parrafo = document.createElement('p')    // nombre de la etiqueta HTML a crear con JS
     // UNA VEZ CREADO EL PARRAFO MODIFICAMOS EL CONTENIDO INCLUIDO DENTRO DEL HTML
     parrafo.innerHTML = 'Tu mascota atacó con' + ataqueJugador + 
-                        'la mascota del enemigo atacó con ' + ataqueEnemigo
+                        'la mascota del enemigo atacó con ' + ataqueEnemigo +
+                        '<span id="resultado"></span>'
 
     // PREVIAMENTE YA HA CREADO EL PARRAFO PERO FALTA INDICARLE DONDE QUEREMOS QUE LO META
     // LE INDICAMOS QUE SE LO AÑADA A LA SECCION
@@ -120,3 +121,7 @@ window.addEventListener('load', () => {
 
 
 window.addEventListener('load', ataquesJugador)
+
+
+
+// FIXME: validar que no se pueda combatir si no se elige mascota
