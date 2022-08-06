@@ -93,17 +93,32 @@ function f_ataquesEnemigo() {
         ataqueEnemigo = 'TIERRA'
     }
 
-    // UNA VEZ SE TIENEN LOS DOS ATAQUES SE CREAN LOS MENSAJES
-    crearMensaje()
+    // DESPUES DE TENER LOS DOS ATAQUES, SE HACE EL COMBATE
+    combate()
 }
 
 
-function crearMensaje() {
+function combate() {
+    if(ataqueJugador == ataqueEnemigo) {
+        crearMensaje("EMPATE")
+    } else if(ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") {
+        crearMensaje("GANASTE")
+    } else if(ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO") {
+        crearMensaje("GANASTE")
+    } else if(ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA") {
+        crearMensaje("GANASTE")
+    } else {
+        crearMensaje("PERDISTE")
+    }
+}
+
+
+function crearMensaje(resultado) {
     let parrafo = document.createElement('p')    // nombre de la etiqueta HTML a crear con JS
     // UNA VEZ CREADO EL PARRAFO MODIFICAMOS EL CONTENIDO INCLUIDO DENTRO DEL HTML
-    parrafo.innerHTML = 'Tu mascota atacó con' + ataqueJugador + 
-                        'la mascota del enemigo atacó con ' + ataqueEnemigo +
-                        '<span id="resultado"></span>'
+    parrafo.innerHTML = 'Tu mascota atacó con ' + ataqueJugador + 
+                        '. La mascota del enemigo atacó con ' + ataqueEnemigo +
+                        ": " + resultado
 
     // PREVIAMENTE YA HA CREADO EL PARRAFO PERO FALTA INDICARLE DONDE QUEREMOS QUE LO META
     // LE INDICAMOS QUE SE LO AÑADA A LA SECCION
@@ -121,7 +136,6 @@ window.addEventListener('load', () => {
 
 
 window.addEventListener('load', ataquesJugador)
-
 
 
 // FIXME: validar que no se pueda combatir si no se elige mascota
