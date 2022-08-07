@@ -1,11 +1,14 @@
+function inicio() {
+    // SEGUN CARGA TODO EL HTML SOLO SE HA DE VER LA SECCIÓN DE SELECCIONAR MASCOTA Y EL BOTON RESET
+    let sectionSelectAttack = document.getElementById('select-attack')
+    sectionSelectAttack.style.display = 'none'
+}
+
+
 function selectPet() {
-    // SEGUN CARGA TODO EL HTML SOLO SE HA DE VER LA SECCIÓN DE SELECCIONAR MASCOTA
-    let sectionSelectAttack = document.getElementById('select-attack');
-    sectionSelectAttack.hidden = true;
-
-    let sectionResetButton = document.getElementById('reset-game')
-    sectionResetButton.hidden = true;
-
+    // DESPUES DE CLICKAR EL BOTON SELECCIONAR MASCOTA SE MUESTRAN LOS ATAQUES
+    let sectionSelectAttack = document.getElementById('select-attack')
+    sectionSelectAttack.style.display = 'block'
 
     let playerPetName = document.getElementById('player-pet-name')
 
@@ -107,6 +110,10 @@ function f_ataquesEnemigo() {
 
 
 function combate() {
+    // ANTES DE EMPEZAR EL ATAQUE SE OCULTA LA SECCION DE SELECCIONAR MASCOTA
+    let sectionSelectPet = document.getElementById('select-pets')
+    sectionSelectPet.style.display = 'none'
+
     if(ataqueJugador == ataqueEnemigo) {
         crearMensaje("EMPATE")
         vidas("EMPATE")
@@ -215,3 +222,5 @@ window.addEventListener('load', ataquesJugador)
 
 
 window.addEventListener('load', vidas)
+
+window.addEventListener('load', inicio)
