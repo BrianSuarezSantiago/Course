@@ -18,6 +18,11 @@ function selectPet() {
 
     // DESPUES DE QUE LOS JUGADORES HAYAN ELEGIDO LA MASCOTA SE SELECCIONARA LA MASCOTA DEL ENEMIGO
     selectEnemyPet()    // No hay que asignarselo a un boton
+
+    let resetButton = document.getElementById('reset-button')
+    resetButton.addEventListener('click', () => {
+        location.reload()
+    })
 }
 
 
@@ -110,6 +115,7 @@ function combate() {
         vidas("GANASTE")
     } else if(ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA") {
         crearMensaje("GANASTE")
+        // TAMBIEN SE PODRIA METER LOS SPAN Y DEMAS AQUI
         vidas("GANASTE")
     } else {
         crearMensaje("PERDISTE")
@@ -140,32 +146,52 @@ function vidas(result) {
     let spanEnemyLifes = document.getElementById('enemy-lifes')
     //spanEnemyLifes.innerHTML = '3'
     spanEnemyLifes.innerHTML = enemyLifesCounter
+    
+    if(result == "GANASTE") {
+        enemyLifesCounter--
+        spanEnemyLifes.innerHTML = enemyLifesCounter
+    } else if(result == "PERDISTE") {
+        playerLifesCounter--
+        spanPlayerLifes.innerHTML = playerLifesCounter
+    }
+    revisarVidas()
+}
 
-    if(playerLifesCounter == 0 || enemyLifesCounter == 0) {
-        alert("FIN DEL JUEGO!!")
-    } else {
-        if(result == "GANASTE") {
-            enemyLifesCounter--
-            spanEnemyLifes.innerHTML = enemyLifesCounter
-        } else if(result == "PERDISTE") {
-            playerLifesCounter--
-            spanPlayerLifes.innerHTML = playerLifesCounter
-        }
+
+function revisarVidas() {
+    if(playerLifesCounter == 0) {
+        crearMensajeVidas("HAS PERDIDO")
+    } else if(enemyLifesCounter == 0) {
+        crearMensajeVidas("HAS GANADO")
     }
 }
+
+function crearMensajeVidas(result) {
+    let message = document.createElement('p')
+
+    message.innerHTML = "EL JUEGO HA TERMINADO Y " + result
+
+    let spanGameMessages = document.getElementById('game-messages')
+    spanGameMessages.appendChild(message)
+}
+
+
+
 
 
 // Pedimos al browser que nos avise cuando se hayan cargado todos los componentes de HTML
 window.addEventListener('load', () => {
     // Se ejecutara el script cuando el navegador haya cargado todos los elementos HTML
-    let petButton = document.getElementById('select-pet-button');   // Ya estamos seguros de que ha cargado
+    let petButton = document.getElementById('select-pet-button')   // Ya estamos seguros de que ha cargado
     petButton.addEventListener('click', selectPet)
 })
 
 
 window.addEventListener('load', ataquesJugador)
 
+
 window.addEventListener('load', vidas)
 
 
 // FIXME: validar que no se pueda combatir si no se elige mascota
+// FIXME: validar que no se pueda seguir jugando cuando la vida de alguno de los jugadores llegue a 0
