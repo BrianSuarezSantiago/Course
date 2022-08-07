@@ -1,4 +1,12 @@
 function selectPet() {
+    // SEGUN CARGA TODO EL HTML SOLO SE HA DE VER LA SECCIÓN DE SELECCIONAR MASCOTA
+    let sectionSelectAttack = document.getElementById('select-attack');
+    sectionSelectAttack.hidden = true;
+
+    let sectionResetButton = document.getElementById('reset-game')
+    sectionResetButton.hidden = true;
+
+
     let playerPetName = document.getElementById('player-pet-name')
 
     // Se ha de comprobar todos y cada uno de los radio buttons
@@ -18,11 +26,6 @@ function selectPet() {
 
     // DESPUES DE QUE LOS JUGADORES HAYAN ELEGIDO LA MASCOTA SE SELECCIONARA LA MASCOTA DEL ENEMIGO
     selectEnemyPet()    // No hay que asignarselo a un boton
-
-    let resetButton = document.getElementById('reset-button')
-    resetButton.addEventListener('click', () => {
-        location.reload()
-    })
 }
 
 
@@ -167,16 +170,37 @@ function revisarVidas() {
 }
 
 function crearMensajeVidas(result) {
-    let message = document.createElement('p')
-
-    message.innerHTML = "EL JUEGO HA TERMINADO Y " + result
+    let message = document.createElement('p')   // 1. CREAMOS EL ELEMENTO HTML
+    message.innerHTML = "EL JUEGO HA TERMINADO Y " + result // 2. MODIFICAMOS SU CONTENIDO INTERNO SI ES NECESARIO
 
     let spanGameMessages = document.getElementById('game-messages')
-    spanGameMessages.appendChild(message)
+    spanGameMessages.appendChild(message)   // 3. INDICAMOS DONDE AÑADIRLO
+
+    // DESPUES DE QUE SE MUESTRE EL MENSAJE FINAL, SE EVITA SEGUIR ATACANDO/PULSANDO LOS BOTONES DE ATAQU
+    let fireButton = document.getElementById("fire-button")
+    fireButton.disabled = true  // DESAHABILITAMOS MEDIANTE LA PROPIEDAD disabled LA CAPACIDAD DE QUE EL BOTON SE PULSE
+
+    let waterButton = document.getElementById("water-button")
+    waterButton.disabled = true
+
+    let landButton = document.getElementById("land-button")
+    landButton.disabled = true
+
+    
+    
 }
 
 
-
+window.addEventListener('load', () => {
+    let resetButton = document.getElementById('reset-button')
+    resetButton.addEventListener('click', () => {
+        // location es un objeto del DOM(como window y document) pero que no se refiere a la ventana/pestaña
+        // ni html del navegador, sino a la ubicacion en la que estamos. Cuando estamos en platzi.com eso es
+        // una location o cuando estamos en platzi.com/cursos/prog-basica eso es otro location
+        // En este caso, bajo el localhost seria http://127.0.0.1:5500/Curso/Mokemon/index.html
+        location.reload()
+    })
+})
 
 
 // Pedimos al browser que nos avise cuando se hayan cargado todos los componentes de HTML
@@ -191,7 +215,3 @@ window.addEventListener('load', ataquesJugador)
 
 
 window.addEventListener('load', vidas)
-
-
-// FIXME: validar que no se pueda combatir si no se elige mascota
-// FIXME: validar que no se pueda seguir jugando cuando la vida de alguno de los jugadores llegue a 0

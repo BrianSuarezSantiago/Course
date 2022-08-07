@@ -58,6 +58,8 @@ window.addEventListener('load', () => {
     })
 })
 
+let sectionSelectAttack = document.getElementById('select-attack');
+sectionSelectAttack.hidden = true;
 
-
-global vs local
+let sectionResetButton = document.getElementById('reset-game')
+sectionResetButton.hidden = true;
