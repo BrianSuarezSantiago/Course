@@ -101,14 +101,19 @@ function f_ataquesEnemigo() {
 function combate() {
     if(ataqueJugador == ataqueEnemigo) {
         crearMensaje("EMPATE")
+        vidas("EMPATE")
     } else if(ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") {
         crearMensaje("GANASTE")
+        vidas("GANASTE")
     } else if(ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO") {
         crearMensaje("GANASTE")
+        vidas("GANASTE")
     } else if(ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA") {
         crearMensaje("GANASTE")
+        vidas("GANASTE")
     } else {
         crearMensaje("PERDISTE")
+        vidas("PERDISTE")
     }
 }
 
@@ -119,11 +124,34 @@ function crearMensaje(resultado) {
     parrafo.innerHTML = 'Tu mascota atacó con ' + ataqueJugador + 
                         '. La mascota del enemigo atacó con ' + ataqueEnemigo +
                         ": " + resultado
-
     // PREVIAMENTE YA HA CREADO EL PARRAFO PERO FALTA INDICARLE DONDE QUEREMOS QUE LO META
     // LE INDICAMOS QUE SE LO AÑADA A LA SECCION
     let sectionMensajes = document.getElementById('game-messages');
     sectionMensajes.appendChild(parrafo)
+}
+
+let playerLifesCounter = 3, enemyLifesCounter = 3   // values by default
+
+function vidas(result) {    
+    let spanPlayerLifes = document.getElementById('player-lifes')
+    //spanPlayerLifes.innerHTML = '3'
+    spanPlayerLifes.innerHTML = playerLifesCounter
+
+    let spanEnemyLifes = document.getElementById('enemy-lifes')
+    //spanEnemyLifes.innerHTML = '3'
+    spanEnemyLifes.innerHTML = enemyLifesCounter
+
+    if(playerLifesCounter == 0 || enemyLifesCounter == 0) {
+        alert("FIN DEL JUEGO!!")
+    } else {
+        if(result == "GANASTE") {
+            enemyLifesCounter--
+            spanEnemyLifes.innerHTML = enemyLifesCounter
+        } else if(result == "PERDISTE") {
+            playerLifesCounter--
+            spanPlayerLifes.innerHTML = playerLifesCounter
+        }
+    }
 }
 
 
@@ -136,6 +164,8 @@ window.addEventListener('load', () => {
 
 
 window.addEventListener('load', ataquesJugador)
+
+window.addEventListener('load', vidas)
 
 
 // FIXME: validar que no se pueda combatir si no se elige mascota
