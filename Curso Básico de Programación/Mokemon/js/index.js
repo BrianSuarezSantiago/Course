@@ -39,6 +39,10 @@ function generaterandomSelection(min, max) {
 
 
 function selectEnemyPet() {
+    // DESPUES DE QUE EL ENEMIGO ELIJA MASCOTA SE OCULTA DICHA SECCION
+    let sectionSelectPet = document.getElementById('select-pets')
+    sectionSelectPet.style.display = 'none'
+
     let randomSelection = generaterandomSelection(1, 5);
 
     let enemyPetName = document.getElementById('enemy-pet-name');    // span
@@ -110,9 +114,9 @@ function f_ataquesEnemigo() {
 
 
 function combate() {
-    // ANTES DE EMPEZAR EL ATAQUE SE OCULTA LA SECCION DE SELECCIONAR MASCOTA
-    let sectionSelectPet = document.getElementById('select-pets')
-    sectionSelectPet.style.display = 'none'
+    // DURANTE EL COMBATE SE OCULTA EL BOTON DE REINICIO
+    let sectionReset = document.getElementById('reset-game')
+    sectionReset.style.display = 'none'
 
     if(ataqueJugador == ataqueEnemigo) {
         crearMensaje("EMPATE")
@@ -193,8 +197,9 @@ function crearMensajeVidas(result) {
     let landButton = document.getElementById("land-button")
     landButton.disabled = true
 
-    
-    
+    // UNA VEZ TERMINADO EL JUEGO SE MUESTRA EL BOTON DE REINICIO
+    let sectionResetGame = document.getElementById("reset-game")
+    sectionResetGame.style.display = 'block'
 }
 
 
