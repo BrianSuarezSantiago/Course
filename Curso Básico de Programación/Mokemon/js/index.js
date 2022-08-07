@@ -1,7 +1,10 @@
 function inicio() {
-    // SEGUN CARGA TODO EL HTML SOLO SE HA DE VER LA SECCIÓN DE SELECCIONAR MASCOTA Y EL BOTON RESET
+    // SEGUN CARGA TODO EL HTML SOLO SE HA DE VER LA SECCIÓN DE SELECCIONAR MASCOTA
     let sectionSelectAttack = document.getElementById('select-attack')
     sectionSelectAttack.style.display = 'none'
+
+    let sectionReset = document.getElementById('reset-game')
+    sectionReset.style.display = 'none'
 }
 
 
@@ -114,10 +117,6 @@ function f_ataquesEnemigo() {
 
 
 function combate() {
-    // DURANTE EL COMBATE SE OCULTA EL BOTON DE REINICIO
-    let sectionReset = document.getElementById('reset-game')
-    sectionReset.style.display = 'none'
-
     if(ataqueJugador == ataqueEnemigo) {
         crearMensaje("EMPATE")
         vidas("EMPATE")
@@ -150,6 +149,7 @@ function crearMensaje(resultado) {
     sectionMensajes.appendChild(parrafo)
 }
 
+
 let playerLifesCounter = 3, enemyLifesCounter = 3   // values by default
 
 function vidas(result) {    
@@ -179,6 +179,7 @@ function revisarVidas() {
         crearMensajeVidas("HAS GANADO")
     }
 }
+
 
 function crearMensajeVidas(result) {
     let message = document.createElement('p')   // 1. CREAMOS EL ELEMENTO HTML
@@ -224,7 +225,6 @@ window.addEventListener('load', () => {
 
 
 window.addEventListener('load', ataquesJugador)
-
 
 window.addEventListener('load', vidas)
 
